@@ -29,7 +29,9 @@ const LoginForm = () => {
         }
 
         axios.post('https://auth.techjedi.dev/signin', body)
-        .then(res => { console.log(res.data)})
+        .then(res => { 
+            window.location.href = res.data.data;
+        })
         .catch(err => console.log(err))
 
     };
