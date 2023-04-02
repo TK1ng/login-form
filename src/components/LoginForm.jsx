@@ -33,10 +33,13 @@ const LoginForm = () => {
 
         const body = {
             username: emailInput,
-            password: passwordInput
+            password: passwordInput,
+            name: nameInput ? nameInput : null
         }
 
-        axios.post('https://auth.techjedi.dev/signin', body)
+        const endpoint = register ? 'signup' : 'signin';
+
+        axios.post(`https://auth.techjedi.dev/${endpoint}`, body)
         .then(res => { 
             setIsSubmitting(false);
             window.location.href = res.data.data;
